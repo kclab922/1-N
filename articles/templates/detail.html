@@ -4,4 +4,12 @@
     <h1>{{ article.title }}</h1>
     <p>{{ article.content }}</p>
 
+    <hr>
+    <!-- 여기서 article_id는 urls.py로 보냄. article.id의 article은 위에서 옴. -->
+    <form action="{% url 'articles:comment_create' article_id=article.id %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+
 {% endblock %}
